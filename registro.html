@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Page Title</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<header>
+    <nav>
+    <div class="nav-wrapper black">
+        <i class="sidenav-trigger show-on-medium-and-down material-icons"  style="display:none;" onclick="instancia.open()"> menu</i>
+        <a class="brand-logo" href="index.html" style="margin-left:2%;">Darkgames</a>
+        <ul class="right hide-on-med-and-down">
+           <LI> <a>Todos los juegos</a> </LI>
+           <LI> <a>Acerca de</a> </LI>
+           <LI> <a href="login.html">Iniciar sesion</a> </LI>
+      
+  
+
+        </ul>
+
+    </div>
+
+    </nav>
+    
+</header>
+<ul class="sidenav">
+        <div class="user-view black">
+       <h3 class="white-text" style="padding-bottom:7%;">DarkGames</h3>
+       </div>
+        <LI> <a><i class="material-icons">games</i>Todos los juegos</a> </LI>
+        <LI> <a> <i class="material-icons">info</i>Acerca de</a> </LI>
+        <LI> <a href="login.html"> <i class="material-icons">lock</i>Iniciar sesion</a> </LI>
+   
+
+
+     </ul>
+
+<body>
+
+    <div class="container">
+
+            <h2 class="center">Registrarse</h2>
+            <input type="text" id="nombre" class="text-field" placeholder="Nombre">
+            <input type="text" id="apellido" class="text-field" placeholder="Apellido">
+            <input type="text" id="direccion" class="text-field" placeholder="Direccion">
+            <input type="tel"  id="telefono" class="text-field" placeholder="Numero de telefono">          
+            <input type="email" id="correo"  class="text-field" placeholder="Correo">
+            <input type="password"  id="contraseña" class="text-field" placeholder="Contraseña">
+            <input type="password" id="contraseña2" class="text-field" placeholder="Repetir contraseña">
+            <button class="btn black" style="width: 100%" onclick="registrarse()">Registrarse</button>
+        
+
+    </div>
+ 
+
+
+
+</body>
+</html>
+
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+<script src="js/index.js"></script>
