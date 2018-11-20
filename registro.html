@@ -14,7 +14,7 @@
     <nav>
     <div class="nav-wrapper black">
         <i class="sidenav-trigger show-on-medium-and-down material-icons"  style="display:none;" onclick="instancia.open()"> menu</i>
-        <a class="brand-logo" href="index.html" style="margin-left:2%;">Darkgames</a>
+        <a class="brand-logo" href="index.html" style="margin-left:2%;"><img class="logoo" src="imgs/Imagen12.png"></a>
         <ul class="right hide-on-med-and-down">
            <LI> <a>Todos los juegos</a> </LI>
            <LI> <a>Acerca de</a> </LI>
@@ -41,22 +41,53 @@
 
      </ul>
 
-<body>
+<body class="wallpapered">
 
-    <div class="container">
 
-            <h2 class="center">Registrarse</h2>
-            <input type="text" id="nombre" class="text-field" placeholder="Nombre">
-            <input type="text" id="apellido" class="text-field" placeholder="Apellido">
-            <input type="text" id="direccion" class="text-field" placeholder="Direccion">
-            <input type="tel"  id="telefono" class="text-field" placeholder="Numero de telefono">          
-            <input type="email" id="correo"  class="text-field" placeholder="Correo">
-            <input type="password"  id="contraseña" class="text-field" placeholder="Contraseña">
-            <input type="password" id="contraseña2" class="text-field" placeholder="Repetir contraseña">
-            <button class="btn black" style="width: 100%" onclick="registrarse()">Registrarse</button>
-        
 
-    </div>
+    <form class="container registerpage white z-depth-3" onsubmit="event.preventDefault();">
+
+            <h5 class="center">Registrarse</h5>
+
+            <div class="row">
+                <div class="input-field col s6">
+                  <input id="nombre" type="text" class="validate">
+                  <label for="nombre">Nombre</label>
+                </div>
+             
+            
+                <div class="input-field col s6">
+                  <input id="apellido" type="text" class="validate">
+                  <label for="apellido">Apellido</label>
+                </div>
+              </div>
+         
+         
+              <div class="row">
+                <div class="input-field col s12">
+                    <input type="email" id="correo"  class="text-field">
+                  <label for="correo">Correo</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                    <input type="password"  id="contraseña" class="text-field" >
+                  <label for="contraseña">Contraseña</label>
+                </div>
+              </div>
+              <div class="row">
+                <div class="input-field col s12">
+                    <input type="password"  id="contraseña2" class="text-field" >
+                  <label for="contraseña2">Repetir Contraseña</label>
+                </div>
+              </div>
+
+
+       
+            <button class="btn black"  onclick="registrarse()">Registrarse</button>
+            <h6> Ya tiene cuenta?<a href="login.html">Iniciar sesion</a></h6>
+
+            </form>
  
 
 

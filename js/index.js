@@ -42,12 +42,10 @@ function registrarse(){
 
 var nombre=document.getElementById("nombre").value;
 var apellido=document.getElementById("apellido").value;
-var direccion=document.getElementById("direccion").value;
-var telefono=document.getElementById("telefono").value;
 var correo=document.getElementById("correo").value;
 var contraseña=document.getElementById("contraseña").value;
 var contraseña2=document.getElementById("contraseña2").value;
-var arreglo=[nombre,apellido,direccion,telefono,correo,contraseña,contraseña2]
+var arreglo=[nombre,apellido,correo,contraseña,contraseña2]
 var vacios=false;
 for(let i=0;i<arreglo.length;i++){
 
@@ -55,7 +53,7 @@ if(arreglo[i].trim()=="")
       vacios=true
 }
 if(vacios)
-   alert("hay campos vacios");
+   M.toast({html: 'No pueden haber campos vacios', classes: 'rounded'})
 else{
   
     firebase.auth().createUserWithEmailAndPassword(correo, contraseña)
@@ -63,11 +61,10 @@ else{
        
                 firebase.database().ref('usuarios/' + correo.replace(".","")).set({
                     Nombre: nombre,
-                    Apellido: apellido,
-                    Direccion : direccion,
-                    Telefono : telefono,
-                    Correo:correo
-                  }).then(function(){ alert("registro exitoso");});
+                    Apellido: apellido,                  
+                    Correo:correo,
+                    Puntos:999999
+                  }).then(function(){ M.toast({html: 'Registro exitoso', classes: 'rounded'});});
               
         
               })
@@ -76,7 +73,7 @@ else{
        
         var errorCode = error.code;
         var errorMessage = error.message;
-        alert("ocurrio un error");
+        M.toast({html: 'Ocurrio un error al registrar', classes: 'rounded'})
         // ...
       })
      

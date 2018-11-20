@@ -4,3 +4,94 @@ height:40px;
 width: 40px;
 
 }
+
+
+ 
+
+.loginpage{
+    border-radius:2%;
+    height: 380px;
+    width:350px;
+    position: absolute;
+margin: auto;
+    top:80px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+ 
+}
+.loginpage button{
+
+    width: 80%;
+    margin-left:10%;
+    margin-right: 10%;
+
+}
+.loginpage .row{
+width: 80%;
+}
+.loginpage h6{
+    margin-top:10%;
+    width: 80%;
+    margin-left:10%;
+    margin-right: 10%;
+}
+
+
+
+.registerpage{
+    border-radius:2%;
+    height: 560px;
+    width:350px;
+    position: absolute;
+margin: auto;
+    top:75px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+  
+    
+}
+
+.registerpage button{
+
+    width: 80%;
+    margin-left:10%;
+    margin-right: 10%;
+
+}
+.registerpage .row{
+width: 80%;
+}
+.registerpage h6{
+    margin-top:5%;
+    width: 80%;
+    margin-left:10%;
+    margin-right: 10%;
+}
+
+
+.wallpapered{
+background-color: black;
+background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../imgs/BestGames2018.jpg);
+background-size: cover;
+
+
+}
+
+
+
+@media only screen and (max-width: 600px) {
+  .registerpage{
+  margin-top:0px;
+   width: 100%;
+ border-radius: 0px;
+
+  }
+  .loginpage{
+    margin-top:0px;
+    width: 100%;
+    border-radius: 0px;
+
+  }
+}

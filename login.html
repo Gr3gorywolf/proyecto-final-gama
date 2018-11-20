@@ -14,7 +14,7 @@
     <nav>
     <div class="nav-wrapper black">
         <i class="sidenav-trigger show-on-medium-and-down material-icons"  style="display:none;" onclick="instancia.open()"> menu</i>
-        <a class="brand-logo" href="index.html" style="margin-left:2%;">Darkgames</a>
+        <a class="brand-logo" href="index.html" style="margin-left:2%;"><img class="logoo" src="imgs/Imagen12.png"></a>
         <ul class="right hide-on-med-and-down">
            <LI> <a>Todos los juegos</a> </LI>
            <LI> <a>Acerca de</a> </LI>
@@ -41,18 +41,30 @@
 
      </ul>
 
-<body>
+<body class="wallpapered">
 
-    <div class="container">
+    <form class="container white z-depth-3 loginpage" onsubmit="event.preventDefault();" >
 
-            <h2 class="center">Iniciar sesion</h2>
-    
-            <input type="text" class="text-field" placeholder="Correo" id="correo">
-            <input type="text" class="text-field" placeholder="Contraseña" id="contraseña">
-            <button class="btn black" style="width: 100%" onclick="logearse()">entrar</button>
+            <h5 class="center">Iniciar sesion</h5>
+
+
+            <div class="row">
+                <div class="input-field col s12">
+                  <input id="correo" type="email" class="validate">
+                  <label for="correo">Correo</label>
+                </div>
+              </div>
+            <div class="row">
+                <div class="input-field col s12">
+                  <input id="contraseña" type="password" class="validate">
+                  <label for="contraseña">Contraseña</label>
+                </div>
+              </div>
+          
+            <button class="btn black" onclick="logearse()">entrar</button>
             <h6> No tiene cuenta? <a href="registro.html">Registrarse</a></h6>
 
-    </div>
+    </form>
  
 
 
