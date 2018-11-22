@@ -27,7 +27,7 @@
   var objeto={};
 var estalogeado=false;
 console.log(localStorage.getItem("usuario"));
-if(localStorage.getItem("usuario")===undefined ||localStorage.getItem("usuario")===null  ){
+if(localStorage.getItem("usuario")===undefined ||localStorage.getItem("usuario")===null || localStorage.getItem("usuario")=="none" ){
   estalogeado=false;
 
     }else{
@@ -129,10 +129,10 @@ else{
 
 }
 function deslogearse(){
-  localStorage.setItem("usuario",null);
-  localStorage.setItem("contraseña",null);
-  localStorage.setItem("usuarioc",null);
-  localStorage.setItem("contraseñac",null);
+  localStorage.setItem("usuario","none");
+  localStorage.setItem("contraseña","none");
+  localStorage.setItem("usuarioc","none");
+  localStorage.setItem("contraseñac","none");
  window.open("login.html","_self")
 
 }
