@@ -129,10 +129,10 @@ else{
 
 }
 function deslogearse(){
-  localStorage.setItem("usuario",undefined);
-  localStorage.setItem("contraseña",undefined);
-  localStorage.setItem("usuarioc",undefined);
-  localStorage.setItem("contraseñac",undefined);
+  localStorage.setItem("usuario",null);
+  localStorage.setItem("contraseña",null);
+  localStorage.setItem("usuarioc",null);
+  localStorage.setItem("contraseñac",null);
  window.open("login.html","_self")
 
 }
