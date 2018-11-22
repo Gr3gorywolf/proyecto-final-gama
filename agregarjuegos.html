@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DarkGames-Inicio</title>
+    <link rel="shortcut icon" href="imgs/Imagen12.png" /> 
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/styles.css" rel="stylesheet">
+</head>
+<header>
+    <nav>
+    <div class="nav-wrapper black">
+        <i class="sidenav-trigger show-on-medium-and-down material-icons"  style="display:none;" onclick="instancia.open()"> menu</i>
+        <a class="brand-logo" href="index.html" style="margin-left:2%;"><img class="logoo" src="imgs/Imagen12.png"></a>
+        <ul class="right hide-on-med-and-down">
+           <LI> <a>Todos los juegos</a> </LI>
+           <LI> <a>Acerca de</a> </LI>
+           <LI id="profile"> <a href="login.html">Iniciar sesión  </a> </LI>
+      
+  
+
+        </ul>
+    </div>
+    </nav>
+    
+</header>
+
+<ul class="sidenav">
+        <div class="user-view black">
+       <h3 class="white-text" style="padding-bottom:7%;">DarkGames</h3>
+       </div>
+        <LI> <a><i class="material-icons">games</i>Todos los juegos</a> </LI>
+        <LI> <a> <i class="material-icons">info</i>Acerca de</a> </LI>
+        <LI id="profileside"> <a href="login.html"> <i class="material-icons">lock</i>Iniciar sesión</a> </LI>
+   
+
+
+     </ul>
+<body >
+    <div class="container" style="margin-top: 35px">
+<input type="text" class="text-field" placeholder="Link de imagen" id="link">
+<input type="text" class="text-field" placeholder="Nombre del juego" id="nombre">
+<textarea  class="materialize-textarea" placeholder="Reseña del juego" id="resena"></textarea>
+<input type="number" class="text-field" placeholder="Puntos necesarios" id="puntos">
+<input type="text" class="text-field" placeholder="Link del trailer de youtube" id="trailer">
+<button style="width:100%;" class="btn black" onclick="agregarjuegos()" >Agregar</button>
+</div>
+</body>
+</html>
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
+<script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+<script src="js/index.js"></script>
