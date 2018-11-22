@@ -42,9 +42,11 @@
      </ul>
 
 <body class="wallpapered" onload="loadmiperfil()" >
+    <div class="progress white" style="margin:0px;padding: 0px;" id="progreso">
+        <div class="indeterminate red"></div>
+    </div>
 
-
-<div class="row white container center align" style="margin-top:5%;border-radius:2%;padding:1%">
+<div class="row white container center align" id="supercontainer" style="margin-top:5%;border-radius:2%;padding:1%;opacity:0;" >
 <div class="col s12 m12 l6" id="infocontainer" style="border-radius:5%;">
 
         <h5 class="center-align">Informacion personal</h5>
@@ -54,9 +56,9 @@
 </div>
 <div class="col s12 m12 l6" >
         <h5 class="center-align">Mis juegos</h5>
-          <ul class=" gamecontainer collection"  id="containerjuegos">
+          <div class=" gamecontainer row"  id="containerjuegos">
               
-          </ul>
+          </div>
 </div>
 
 </div>

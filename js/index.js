@@ -238,6 +238,8 @@ var contenedor=document.getElementById("containergames");
   ref.once('value', function(snapshot) {
     let valor=snapshot.val();
     console.log(valor);
+      document.getElementById("progreso").style.display="none";
+
     if(valor!=undefined){
 
 
@@ -274,7 +276,7 @@ var todo="";
 
           <div class="card  hoverable">
           <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator img-responsive" src=${child.val().imagen} style="height:350px;">
+            <img class="activator img-responsive" src=${child.val().imagen} style="height:300px;">
           </div>
           <div class="card-content">
 
@@ -285,7 +287,7 @@ var todo="";
              <p class="green-text right">${child.val().precio} Puntos</p>
           </div>
           <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4">${child.val().titulo}<i class="material-icons right">close</i></span>
+      <span class="card-title grey-text text-darken-4 truncate">${child.val().titulo}<i class="material-icons right">close</i></span>
      
             <p >${child.val().descripcion}</p>
           </div>
@@ -317,6 +319,8 @@ function loadmiperfil(){
   var containerjuegos=document.getElementById("containerjuegos");
   var ref=firebase.database().ref('usuarios/' + localStorage.getItem("usuario") );
   ref.once('value', function(snapshot) {
+    document.getElementById("progreso").style.display="none";
+    document.getElementById("supercontainer").style.opacity=1;
     let valor=snapshot.val();
     var njuegos=0;
       var gamescollection="";
@@ -324,14 +328,25 @@ function loadmiperfil(){
     if(valor.Juegos!=null){
 
       snapshot.child("Juegos").forEach(function(child){
-       gamescollection+=`<li class="collection-item avatar">
-       <img src="${child.val().imagen}" alt="" class="circle">
-       <span class="title">${child.val().titulo}</span>
-       <p><a href="${child.val().trailer}">Ver trailer</a> <br>
-       ${child.val().key}
-       </p>
-       <a href="#!" class="secondary-content"><i class="material-icons black-text">info</i></a>
-     </li>`
+       gamescollection+=`
+       
+       
+     <div class="col s12 m6 l6 ">  
+  <div class="card hoverable">
+      <div class="card-image">
+       <img src="${child.val().imagen}" style="height:200px;" class="img-responsive">
+       <span class="card-title  truncate" style="background-color:rgba(0,0,0,0.5);width:100%">${child.val().titulo}</span>
+      
+     </div>
+     <div class="card-action">
+     <a href=${child.val().info}><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver info" >info</i></a> 
+     <a href=${child.val().info}><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver trailer" >ondemand_video</i></a> 
+     <a href=${child.val().info}><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver clave de steam" > confirmation_number</i></a> 
+     </div>    
+  </div>   
+  </div>  
+  </div>    
+   `
         njuegos++
       });
     
@@ -340,11 +355,25 @@ function loadmiperfil(){
 
    containerinfo.innerHTML+=`
 
-      <h6 >Nombre  ${valor.Nombre}</h6>
-    <h6 >Apellido   ${valor.Apellido}</h6>
-    <h6 >Puntos   ${valor.Puntos}</h6>
-    <h6 >Correo   ${valor.Correo}</h6>
-    <h6 >Juegos adquiridos  ${njuegos}</h6>
+     <div class="row" style="margin-left:10%;">
+      <div class="col s12">
+      <h6 class="left inlineicon" > <i class="material-icons inlineicon" >account_box</i>${valor.Nombre}  ${valor.Apellido}</h6>
+      </div>
+      <div class="col s12">
+      <h6 class="left inlineicon"  ><i class="material-icons inlineicon">attach_money</i>  ${valor.Puntos} Puntos</h6>
+      </div>
+      <div class="col s12">
+      <h6  class="left inlineicon" ><i class="material-icons inlineicon">mail</i>   ${valor.Correo}</h6>
+      </div>
+      <div class="col s12">
+      <h6  class="left inlineicon" ><i class="material-icons inlineicon">games</i> ${njuegos}</h6>
+      </div>
+
+     </div>
+ 
+  
+    
+   
 
    `
      if(njuegos==0){
@@ -355,6 +384,8 @@ function loadmiperfil(){
       `
     }else{
       containerjuegos.innerHTML=gamescollection;
+      var elems = document.querySelectorAll('.tooltipped');
+       M.Tooltip.init(elems);
     }
 
   });

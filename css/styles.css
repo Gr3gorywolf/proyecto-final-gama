@@ -68,8 +68,12 @@ width: 80%;
     width: 80%;
     margin-left:10%;
     margin-right: 10%;
+  
 }
-
+.inlineicon{
+    vertical-align: bottom;
+    font-size: 18px !important;
+}
 .imagenmd{
 
 border-radius:10%;
