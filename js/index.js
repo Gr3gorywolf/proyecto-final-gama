@@ -27,13 +27,13 @@
   var objeto={};
 var estalogeado=false;
 console.log(localStorage.getItem("usuario"));
-if(localStorage.getItem("usuario")===undefined ){
+if(localStorage.getItem("usuario")===undefined ||localStorage.getItem("usuario")===null  ){
   estalogeado=false;
-  console.log("no")
+
     }else{
 
       estalogeado=true;
-      console.log("si")
+    
     }
   
 
