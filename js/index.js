@@ -27,7 +27,7 @@
   var objeto={};
 var estalogeado=false;
 console.log(localStorage.getItem("usuario"));
-if(localStorage.getItem("usuario")=="undefined" ){
+if(localStorage.getItem("usuario")===undefined ){
   estalogeado=false;
   console.log("no")
     }else{
