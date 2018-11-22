@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>DarkGames-Juegos</title>
     <link rel="shortcut icon" href="imgs/Imagen12.png" /> 
-    <title>DarkGames-Login</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -17,9 +17,9 @@
         <i class="sidenav-trigger show-on-medium-and-down material-icons"  style="display:none;" onclick="instancia.open()"> menu</i>
         <a class="brand-logo" href="index.html" style="margin-left:2%;"><img class="logoo" src="imgs/Imagen12.png"></a>
         <ul class="right hide-on-med-and-down">
-           <LI> <a href="juegos.html">Todos los juegos</a> </LI>
+       
            <LI> <a>Acerca de</a> </LI>
-          
+           <LI id="profile"> <a href="login.html">Iniciar sesión  </a> </LI>
       
   
 
@@ -30,54 +30,28 @@
     </nav>
     
 </header>
+
 <ul class="sidenav">
         <div class="user-view black">
        <h3 class="white-text" style="padding-bottom:7%;">DarkGames</h3>
        </div>
-        <LI> <a href="juegos.html"><i class="material-icons">games</i>Todos los juegos</a> </LI>
+
         <LI> <a> <i class="material-icons">info</i>Acerca de</a> </LI>
-      
+        <LI id="profileside"> <a href="login.html"> <i class="material-icons">lock</i>Iniciar sesión</a> </LI>
    
 
 
      </ul>
-
-<body class="wallpapered">
-
-    <form class="container white z-depth-3 loginpage" onsubmit="event.preventDefault();" >
-
-            <h5 class="center">Iniciar sesión</h5>
+<body onload="loadgames()">
+    
+<div class="row" id="containergames">
 
 
-            <div class="row">
-                <div class="input-field col s12">
-                  <input id="correo" type="email" class="validate">
-                  <label for="correo">Correo</label>
-                </div>
-              </div>
-            <div class="row">
-                <div class="input-field col s12">
-                  <input id="contraseña" type="password" class="validate">
-                  <label for="contraseña">Contraseña</label>
-                </div>
-              </div>
-              <p  style="margin-left: 10%;">
-                    <label>
-                      <input type="checkbox" id="recordar" class="filled-in" />
-                      <span>Mantenerme conectado</span>
-                  </label>
-                  </p>
-            <button class="btn black" onclick="logearse()">entrar</button>
-            <h6> No tiene cuenta?   <a href="registro.html">Registrarse</a></h6>
-
-    </form>
- 
-
+</div>
 
 
 </body>
 </html>
-
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
 <script src="js/index.js"></script>

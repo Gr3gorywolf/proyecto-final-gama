@@ -4,7 +4,7 @@
     <meta charset="utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="shortcut icon" href="imgs/Imagen12.png" /> 
-    <title>DarkGames-Login</title>
+    <title>DarkGames-Perfil</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/js/materialize.min.js"></script>
@@ -18,9 +18,8 @@
         <a class="brand-logo" href="index.html" style="margin-left:2%;"><img class="logoo" src="imgs/Imagen12.png"></a>
         <ul class="right hide-on-med-and-down">
            <LI> <a href="juegos.html">Todos los juegos</a> </LI>
-           <LI> <a>Acerca de</a> </LI>
-          
-      
+           <LI> <a>Acerca de</a> </LI>     
+           <LI> <a href="#" onclick="deslogearse()"> Salir</a> </LI>
   
 
         </ul>
@@ -32,47 +31,36 @@
 </header>
 <ul class="sidenav">
         <div class="user-view black">
-       <h3 class="white-text" style="padding-bottom:7%;">DarkGames</h3>
+       <h3 class="white-text">DarkGames</h3>
        </div>
         <LI> <a href="juegos.html"><i class="material-icons">games</i>Todos los juegos</a> </LI>
         <LI> <a> <i class="material-icons">info</i>Acerca de</a> </LI>
-      
+        <LI> <a href="#" onclick="deslogearse()"> <i class="material-icons">exit_to_app</i>Salir</a> </LI>
    
 
 
      </ul>
 
-<body class="wallpapered">
-
-    <form class="container white z-depth-3 loginpage" onsubmit="event.preventDefault();" >
-
-            <h5 class="center">Iniciar sesión</h5>
+<body class="wallpapered" onload="loadmiperfil()" >
 
 
-            <div class="row">
-                <div class="input-field col s12">
-                  <input id="correo" type="email" class="validate">
-                  <label for="correo">Correo</label>
-                </div>
-              </div>
-            <div class="row">
-                <div class="input-field col s12">
-                  <input id="contraseña" type="password" class="validate">
-                  <label for="contraseña">Contraseña</label>
-                </div>
-              </div>
-              <p  style="margin-left: 10%;">
-                    <label>
-                      <input type="checkbox" id="recordar" class="filled-in" />
-                      <span>Mantenerme conectado</span>
-                  </label>
-                  </p>
-            <button class="btn black" onclick="logearse()">entrar</button>
-            <h6> No tiene cuenta?   <a href="registro.html">Registrarse</a></h6>
+<div class="row white container center align" style="margin-top:5%;border-radius:2%;padding:1%">
+<div class="col s12 m12 l6" id="infocontainer" style="border-radius:5%;">
 
-    </form>
- 
+        <h5 class="center-align">Informacion personal</h5>
 
+<img class="imagenmd center-align" src="https://www.dhresource.com/0x0s/f2-albu-g4-M00-D3-4D-rBVaEVf7oDKAUYstAADDf22zgv4106.jpg/watch-dogs-2-marcus-holloway-cap-and-mask.jpg"/>
+
+</div>
+<div class="col s12 m12 l6" >
+        <h5 class="center-align">Mis juegos</h5>
+          <ul class=" gamecontainer collection"  id="containerjuegos">
+              
+          </ul>
+</div>
+
+</div>
+  
 
 
 </body>
