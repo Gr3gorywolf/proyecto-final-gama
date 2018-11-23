@@ -145,7 +145,12 @@ else{
                     Apellido: apellido,                  
                     Correo:correo,
                     Puntos:1500
-                  }).then(function(){ M.toast({html: 'Registro exitoso', classes: 'rounded'});});
+                  }).then(function(){ 
+                    
+                    M.toast({html: 'Registro exitoso', classes: 'rounded'});
+                    logearse();
+                  
+                  });
               
         
               })
@@ -176,13 +181,14 @@ function logearse(){
     var correo=document.getElementById("correo").value;
     var contraseña=document.getElementById("contraseña").value;
     var recordar=document.getElementById("recordar").checked;
+    M.toast({html: 'Entrando...', classes: 'rounded'})
     firebase.auth().signInWithEmailAndPassword(correo,contraseña)
     
     .then(function()
       
       {
          
-        M.toast({html: 'Cargando...', classes: 'rounded'})
+        M.toast({html: 'Cargando perfil...', classes: 'rounded'})
         var ref=firebase.database().ref('usuarios/' + correo.replace(".","") );
         ref.once('value', function(snapshot) {
           
