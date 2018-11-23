@@ -144,7 +144,7 @@ else{
                     Nombre: nombre,
                     Apellido: apellido,                  
                     Correo:correo,
-                    Puntos:999999
+                    Puntos:1500
                   }).then(function(){ M.toast({html: 'Registro exitoso', classes: 'rounded'});});
               
         
@@ -182,7 +182,7 @@ function logearse(){
       
       {
          
-      
+        M.toast({html: 'Cargando...', classes: 'rounded'})
         var ref=firebase.database().ref('usuarios/' + correo.replace(".","") );
         ref.once('value', function(snapshot) {
           
@@ -215,7 +215,7 @@ function logearse(){
       
         var errorCode = error.code;
         var errorMessage = error.message;
-        console.log(errorMessage);
+        M.toast({html: 'Usuario inexistente o datos incorrectos', classes: 'rounded'})
         // ...
       })
 }
