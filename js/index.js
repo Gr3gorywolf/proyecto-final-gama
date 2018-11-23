@@ -26,6 +26,7 @@
   var objetos=[];
   var objeto={};
 var estalogeado=false;
+var instanciamodalsheet;
 console.log(localStorage.getItem("usuario"));
 if(localStorage.getItem("usuario")===undefined ||localStorage.getItem("usuario")===null || localStorage.getItem("usuario")=="none" ){
   estalogeado=false;
@@ -49,6 +50,21 @@ function inicializarmodal(){
 
 }
 
+
+function getserial(){
+
+  var diccionario=['a','b','c','d','e','f','g','h','i','j','k','l','m'];
+  return Math.floor((Math.random() * 9) + 1).toString()+diccionario[Math.floor((Math.random() * 12),)]
+   +  Math.floor((Math.random() * 9) + 1).toString() +diccionario[Math.floor((Math.random() * 12),)]
+   +Math.floor((Math.random() * 9) + 1).toString()+"-" +diccionario[Math.floor((Math.random() * 12),)]
+   +Math.floor((Math.random() * 9) + 1).toString() +diccionario[Math.floor((Math.random() * 12),)]
+   +Math.floor((Math.random() * 9) + 1).toString() +diccionario[Math.floor((Math.random() * 12),)]+
+   "-"+Math.floor((Math.random() * 9) + 1).toString() +diccionario[Math.floor((Math.random() * 12),)]+
+   Math.floor((Math.random() * 9) + 1).toString() +diccionario[Math.floor((Math.random() * 12),)]+
+   Math.floor((Math.random() * 9) + 1).toString() ;
+
+}
+
 function comprarjuego(){
 
 
@@ -58,18 +74,37 @@ function comprarjuego(){
   ref.once('value', function(snapshot) {
     
 if(snapshot.val().Puntos>=objeto.preciopuntos){
+var tienejuego=false;
 
+    if(snapshot.val().Juegos==undefined ||snapshot.val().Juegos==null ){
+    tienejuego=false;
+    
+    }else{
+       console.log(snapshot.val().Juegos);
+     if(snapshot.val().Juegos[objeto.id]==undefined){
+       tienejuego=false;
+    }else{
+ tienejuego=true;
+
+    }
+
+    }
+if(!tienejuego){
   firebase.database().ref('usuarios/' + localStorage.getItem("usuario") ).update({
     Puntos:parseFloat( snapshot.val().Puntos)-parseFloat(objeto.preciopuntos)})
-  var newPostKey = firebase.database().ref().child('juegos').push().key;
-  firebase.database().ref(`usuarios/${localStorage.getItem("usuario")}/Juegos/` +newPostKey).set({
+
+  firebase.database().ref(`usuarios/${localStorage.getItem("usuario")}/Juegos/` +objeto.id).set({
     imagen:objeto.imagen,
     titulo: objeto.nombre,                  
     descripcion:objeto.resena,
     precio:objeto.preciopuntos,
     trailer:objeto.trailer,
-    key:""
+    key:getserial()
   }).then(function(){ M.toast({html: 'Juego añadido a su lista', classes: 'rounded'});});
+}else{
+  M.toast({html: 'Ya usted tiene este juego', classes: 'rounded'});
+
+}
 
 }else{
   M.toast({html: 'Usted no tiene saldo suficiente', classes: 'rounded'});
@@ -224,6 +259,19 @@ function agregarjuegos(){
 
 
 }
+
+function ponerinfomodal(index){
+var titulo=document.getElementById("titlemodal");
+var descripcion=document.getElementById("descmodal");
+var imagen=document.getElementById("imgmodal");
+
+titulo.innerText=objetos[index].nombre
+descripcion.innerText=objetos[index].resena
+imagen.src=objetos[index].imagen
+
+}
+
+
 /////////////////////////
 
 
@@ -259,15 +307,19 @@ var todo="";
                           nombre:child.val().titulo,
                           resena:child.val().descripcion,
                           preciopuntos:child.val().precio,                   
-                          trailer:child.val().trailer
+                          trailer:child.val().trailer,
+                          id:child.key
             
             }
             objetos.push(objeto);
-           secondaction= `<a href='#' onclick="objeto=objetos[${pos}];comprarjuego();">Comprar</a>`
+           secondaction= `
+           <a href='#' onclick="objeto=objetos[${pos}];comprarjuego();" class="tooltipped" data-position="bottom" data-tooltip="Comprar">
+           <i class="material-icons">shopping_cart</i>
+           </a>`
           }
           else{
 
-            secondaction= `<a   style="display:none;"href=${snapshot.child(pos).info}>Comprar</a>`
+            secondaction= `<a   style="display:none;"></a>`
           }
              
           todo+=`
@@ -276,18 +328,22 @@ var todo="";
 
           <div class="card  hoverable">
           <div class="card-image waves-effect waves-block waves-light">
-            <img class="activator img-responsive" src=${child.val().imagen} style="height:300px;">
+            <img class="activator img-responsive" src=${child.val().imagen} style="height:230px;">
           </div>
-          <div class="card-content">
+          <div class="card-content center-align">
 
-            <span class="card-title activator grey-text text-darken-4 truncate">${child.val().titulo}<i class="material-icons right">more_vert</i></span>
-           
+            <span class="card-title grey-text text-darken-4 truncate">${child.val().titulo.toString().trim()}</span>
+       
           
-            <div class="card-action"><a href=${child.val().info}>Ver informacion</a> ${secondaction}</div>
+            <div class="card-action  ">
+            <a class="tooltipped modal-trigger"  href="#modalinfo" onclick="ponerinfomodal(${pos})" data-position="bottom" data-tooltip="Ver info" ><i class="material-icons" >info</i></a>
+            <a class="tooltipped" href='${child.val().trailer}' data-position="bottom" data-tooltip="Ver trailer"><i class="material-icons">ondemand_video</i></a>  
+             ${secondaction}
+               </div>
              <p class="green-text right">${child.val().precio} Puntos</p>
           </div>
           <div class="card-reveal">
-      <span class="card-title grey-text text-darken-4 truncate">${child.val().titulo}<i class="material-icons right">close</i></span>
+      <span class="card-title grey-text text-darken-4 truncate">${child.val().titulo.toString().trim()}<i class="material-icons right">close</i></span>
      
             <p >${child.val().descripcion}</p>
           </div>
@@ -304,6 +360,12 @@ var todo="";
 
 
 contenedor.innerHTML=todo;
+  
+var elems = document.querySelectorAll('.tooltipped');
+M.Tooltip.init(elems);
+
+var elems2 = document.querySelectorAll('.modal');
+instanciamodalsheet= M.Modal.init(elems2);
     }
 })
 }
@@ -328,10 +390,13 @@ function loadmiperfil(){
     if(valor.Juegos!=null){
 
       snapshot.child("Juegos").forEach(function(child){
+
+
+
        gamescollection+=`
        
        
-     <div class="col s12 m6 l6 ">  
+     <div class="col s12 m12 l12 xl6">  
   <div class="card hoverable">
       <div class="card-image">
        <img src="${child.val().imagen}" style="height:200px;" class="img-responsive">
@@ -339,34 +404,41 @@ function loadmiperfil(){
       
      </div>
      <div class="card-action">
-     <a href=${child.val().info}><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver info" >info</i></a> 
-     <a href=${child.val().info}><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver trailer" >ondemand_video</i></a> 
-     <a href=${child.val().info}><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver clave de steam" > confirmation_number</i></a> 
+     <a href="#modalinfo" class="modal-trigger" onclick="ponerinfomodal(${njuegos})" ><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver info" >info</i></a> 
+     <a href="${child.val().trailer}" )"><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver trailer" >ondemand_video</i></a> 
+     <a href="#modalclave" class="modal-trigger" onclick="document.getElementById('clavee').innerText='${child.val().key}'")"><i class="material-icons tooltipped" data-position="bottom" data-tooltip="Ver clave de steam" > confirmation_number</i></a> 
      </div>    
   </div>   
   </div>  
   </div>    
    `
+   objeto= { imagen:child.val().imagen,
+    nombre:child.val().titulo,
+    resena:child.val().descripcion,
+    preciopuntos:child.val().precio,                   
+    trailer:child.val().trailer
+}
+objetos.push(objeto);
+
         njuegos++
       });
-    
-
+  
     }
 
    containerinfo.innerHTML+=`
 
-     <div class="row" style="margin-left:10%;">
+     <div class="row" style="margin-left:10px;">
       <div class="col s12">
-      <h6 class="left inlineicon" > <i class="material-icons inlineicon" >account_box</i>${valor.Nombre}  ${valor.Apellido}</h6>
+      <h6 class="left" > <i class="material-icons inlineicon" >account_box</i>${valor.Nombre}  ${valor.Apellido}</h6>
       </div>
       <div class="col s12">
-      <h6 class="left inlineicon"  ><i class="material-icons inlineicon">attach_money</i>  ${valor.Puntos} Puntos</h6>
+      <h6 class="left truncate "  ><i class="material-icons inlineicon">attach_money</i>  ${valor.Puntos} Puntos</h6>
       </div>
       <div class="col s12">
-      <h6  class="left inlineicon" ><i class="material-icons inlineicon">mail</i>   ${valor.Correo}</h6>
+      <h6  class="left truncate" ><i class="material-icons inlineicon">mail</i>   ${valor.Correo}</h6>
       </div>
       <div class="col s12">
-      <h6  class="left inlineicon" ><i class="material-icons inlineicon">games</i> ${njuegos}</h6>
+      <h6  class="left truncate " ><i class="material-icons inlineicon">games</i> ${njuegos}</h6>
       </div>
 
      </div>
@@ -386,6 +458,8 @@ function loadmiperfil(){
       containerjuegos.innerHTML=gamescollection;
       var elems = document.querySelectorAll('.tooltipped');
        M.Tooltip.init(elems);
+       var elems2 = document.querySelectorAll('.modal');
+instanciamodalsheet= M.Modal.init(elems2);
     }
 
   });
