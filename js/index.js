@@ -309,15 +309,7 @@ var todo="";
             console.log(child.val().precio);
 
       
-          objeto= { imagen:child.val().imagen,
-                          nombre:child.val().titulo,
-                          resena:child.val().descripcion,
-                          preciopuntos:child.val().precio,                   
-                          trailer:child.val().trailer,
-                          id:child.key
-            
-            }
-            objetos.push(objeto);
+         
            secondaction= `
            <a href='#' onclick="objeto=objetos[${pos}];comprarjuego();" class="tooltipped" data-position="bottom" data-tooltip="Comprar">
            <i class="material-icons">shopping_cart</i>
@@ -359,6 +351,16 @@ var todo="";
           
           
           `
+
+          objeto= { imagen:child.val().imagen,
+            nombre:child.val().titulo,
+            resena:child.val().descripcion,
+            preciopuntos:child.val().precio,                   
+            trailer:child.val().trailer,
+            id:child.key
+
+         }
+         objetos.push(objeto);
          pos++;
         })
         
