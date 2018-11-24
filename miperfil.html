@@ -18,7 +18,7 @@
         <a class="brand-logo" href="index.html" style="margin-left:2%;"><img class="logoo" src="imgs/Imagen12.png"></a>
         <ul class="right hide-on-med-and-down">
            <LI> <a href="juegos.html">Todos los juegos</a> </LI>
-           <LI> <a>Acerca de</a> </LI>     
+           <LI> <a href="acercade.html">Acerca de</a> </LI>
            <LI> <a href="#" onclick="deslogearse()"> Salir</a> </LI>
   
 
@@ -33,8 +33,9 @@
         <div class="user-view black">
        <h3 class="white-text">DarkGames</h3>
        </div>
+       <LI> <a href="index.html"><i class="material-icons">home</i>Inicio</a> </LI>
         <LI> <a href="juegos.html"><i class="material-icons">games</i>Todos los juegos</a> </LI>
-        <LI> <a> <i class="material-icons">info</i>Acerca de</a> </LI>
+        <LI> <a href="acercade.html"> <i class="material-icons">info</i>Acerca de</a> </LI>
         <LI> <a href="#" onclick="deslogearse()"> <i class="material-icons">exit_to_app</i>Salir</a> </LI>
    
 
@@ -51,8 +52,10 @@
 
         <h5 class="center-align">Informacion personal</h5>
 
-<img class="imagenmd center-align" src="https://www.dhresource.com/0x0s/f2-albu-g4-M00-D3-4D-rBVaEVf7oDKAUYstAADDf22zgv4106.jpg/watch-dogs-2-marcus-holloway-cap-and-mask.jpg"/>
-
+<div class="container" > 
+  <img class="imagenmd center-align" id="imgperfil" src="https://www.dhresource.com/0x0s/f2-albu-g4-M00-D3-4D-rBVaEVf7oDKAUYstAADDf22zgv4106.jpg/watch-dogs-2-marcus-holloway-cap-and-mask.jpg"/>
+  <a href="#" class="black-text file-field input-field" ><i class="material-icons" >camera_alt</i><input type="file" id="archivo" accept="image/*" onchange="subirarchivo()"></a>
+</div>
 </div>
 <div class="col s12 m12 l6 xl6" >
         <h5 class="center-align">Mis juegos</h5>
@@ -97,4 +100,5 @@
 
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase-app.js"></script>
 <script src="https://www.gstatic.com/firebasejs/5.5.8/firebase.js"></script>
+
 <script src="js/index.js"></script>

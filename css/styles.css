@@ -93,7 +93,7 @@ margin-top: 30px;
 .wallpapered{
 background-color: black;
 background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)), url(../imgs/BestGames2018.jpg);
-background-size: cover;
+background-size:cover;
 
 
 }
@@ -118,6 +118,8 @@ background-size: cover;
     border-radius: 0px;
 
   }
+
+
 }
 @media only screen and (max-width: 1000px) {
  
