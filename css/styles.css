@@ -5,12 +5,24 @@ width: 40px;
 
 }
 #para{
-margin-top: 140px
-
+margin-top: 25px;
+background-color:skyblue;
+margin-left: 50px;
+margin-right: 50px;
 }
+.twoLines{
+    height:30px;
+    line-height:15px;
+    overflow:hidden;
+ }
 #img{
     -webkit-filter: grayscale(100%);
     filter: grayscale(100%);
+}
+#texto{
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: center
 }
 .loginpage{
     border-radius:2%;
