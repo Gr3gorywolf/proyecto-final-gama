@@ -4,10 +4,14 @@ height:40px;
 width: 40px;
 
 }
+#para{
+margin-top: 140px
 
-
- 
-
+}
+#img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
 .loginpage{
     border-radius:2%;
     height: 420px;
@@ -36,9 +40,6 @@ width: 80%;
     margin-left:10%;
     margin-right: 10%;
 }
-
-
-
 .registerpage{
     border-radius:2%;
     height: 560px;
@@ -52,7 +53,6 @@ margin: auto;
   
     
 }
-
 .registerpage button{
 
     width: 80%;
@@ -98,8 +98,6 @@ background-size:cover;
 
 }
 
-
-
 #img1{filter: brightness(50%);}
 #img2{filter: brightness(50%);}
 #img3{filter: brightness(50%);}
@@ -133,5 +131,6 @@ background-size:cover;
       height:100%;
   
     }
+
 
   }
