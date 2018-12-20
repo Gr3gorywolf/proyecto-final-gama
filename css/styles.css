@@ -4,10 +4,27 @@ height:40px;
 width: 40px;
 
 }
-
-
- 
-
+#para{
+margin-top: 25px;
+background-color:skyblue;
+margin-left: 50px;
+margin-right: 50px;
+padding: 1px 1px
+}
+.twoLines{
+    height:30px;
+    line-height:15px;
+    overflow:hidden;
+ }
+#img{
+    -webkit-filter: grayscale(100%);
+    filter: grayscale(100%);
+}
+#texto{
+    padding-left: 40px;
+    padding-right: 40px;
+    text-align: center
+}
 .loginpage{
     border-radius:2%;
     height: 420px;
@@ -36,9 +53,6 @@ width: 80%;
     margin-left:10%;
     margin-right: 10%;
 }
-
-
-
 .registerpage{
     border-radius:2%;
     height: 560px;
@@ -52,7 +66,6 @@ margin: auto;
   
     
 }
-
 .registerpage button{
 
     width: 80%;
@@ -98,8 +111,6 @@ background-size:cover;
 
 }
 
-
-
 #img1{filter: brightness(50%);}
 #img2{filter: brightness(50%);}
 #img3{filter: brightness(50%);}
@@ -133,5 +144,6 @@ background-size:cover;
       height:100%;
   
     }
+
 
   }
